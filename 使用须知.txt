@@ -1,0 +1,4 @@
+欢迎使用
+本代码包含爬虫，仅用于学习或兴趣，严禁用于非法用途
+在运行.py文件前，请打开命令行，输入以下命令以导入第三方库
+pip install requests beautifulsoup4 lxml
