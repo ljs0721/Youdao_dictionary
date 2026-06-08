@@ -524,7 +524,7 @@ class YoudaoDictApp:
         s = lambda v: int(v * dpi)
         win = tk.Toplevel(self.root)
         win.title("缓存单词列表")
-        win.geometry(f"{s(620)}x{s(420)}")
+        win.geometry(f"{s(580)}x{s(580)}")
         win.configure(bg="#F5F6FA")
         win.resizable(True, True)
         win.transient(self.root)
@@ -535,7 +535,7 @@ class YoudaoDictApp:
                  font=("Segoe UI", s(13)), bg="#FFF", fg="#7F8C8D").pack()
 
         lf = tk.Frame(win, bg="#FFF")
-        lf.pack(pady=(4, 12), padx=12, expand=True, fill=tk.BOTH)
+        lf.pack(pady=(4, 4), padx=12, expand=True, fill=tk.BOTH)
         inner = tk.Frame(lf, bg="#FFF")
         inner.pack(pady=10, padx=10, expand=True, fill=tk.BOTH)
         add_rounded_bg(lf, "#FFF", "#E2E8F0", 10)
@@ -585,7 +585,27 @@ class YoudaoDictApp:
 
         btn = ModernButton(win, "关闭", win.destroy, s(80), s(30),
                             font=("Segoe UI", s(9), "bold"))
-        btn.pack(pady=(0, 12))
+        btn.pack(pady=(0, 4))
+
+        # 开源信息
+        link_frame = tk.Frame(win, bg="#F5F6FA")
+        link_frame.pack(pady=(0, 8))
+        link_label = tk.Label(
+            link_frame,
+            text="本项目已在github开源，详见 https://github.com/ljs0721/Youdao_dictionary",
+            font=("Segoe UI", s(9)),
+            bg="#F5F6FA",
+            fg="#7F8C8D",
+            cursor="hand2"
+        )
+        link_label.pack()
+
+        def open_github(_=None):
+            import webbrowser
+            webbrowser.open("https://github.com/ljs0721/Youdao_dictionary")
+        link_label.bind("<Button-1>", open_github)
+        link_label.bind("<Enter>", lambda e: link_label.config(fg="#4A90D9"))
+        link_label.bind("<Leave>", lambda e: link_label.config(fg="#7F8C8D"))
 
     def _get_source(self):
         """从下拉菜单获取实际数据源标识"""
